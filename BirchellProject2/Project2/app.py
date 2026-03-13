@@ -66,7 +66,14 @@ def update_user(user_id):
 
 # DELETE: Remove user by ID
 # cruD snippet goes here
-
+@app.route('users/<int:user_id>', methods=['DELETE'])
+def delete_user(user_id):
+    global users
+    user = next((u for u in users if u['id'] == user_id), None)
+    if not user:
+        return jsonify({"error": "User not found"}), 404
+    users = [u for u in users if u['id'] != user_id]
+    return jsonify({message: f"User {user_id} deleted"}), 200
 
 
 # starts the application, and binds to 127.0.0.1 NOT localhost!!!

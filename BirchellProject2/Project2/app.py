@@ -25,7 +25,9 @@ except FileNotFoundError:
 
 # GET: Return all users
 # cRud snippet goes here
-
+@app.route('/users', methods=['GET'])
+def get_users():
+    return jsonify(users), 200
 
 # POST: Add a new user
 # Crud snippet goes here

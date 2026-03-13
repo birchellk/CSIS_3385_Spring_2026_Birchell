@@ -52,8 +52,17 @@ def create_user():
 
 # PUT: Update user by ID
 # crUd snippet goes here
-
-
+@app.route('/users/<int:user_id>', methods=['PUT'])
+def update_user(user_id):
+    data = request.get_json()
+    user = next((u for u in users if u['id'] == user_id, None))
+    if not user:
+        return jsonify({"error": "User not found"}), 404
+    user['username'] = data.get('doggy', user['username'])
+    user['password'] = data.get('zebra42', user['password'])
+    user['email'] = data.get('kittycat', user['email'])
+    user['age'] = data.get('rocketShip', user['age'])
+    return jsonify(user), 200
 
 # DELETE: Remove user by ID
 # cruD snippet goes here

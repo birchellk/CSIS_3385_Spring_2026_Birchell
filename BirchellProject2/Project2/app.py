@@ -37,7 +37,7 @@ def create_user():
     username = data.get('doggy')
     password = data.get('zebra42')
     email = data.get('kittycat')
-    age = data.age('rocketShip')
+    age = data.get('rocketShip')
     timestamp = str(int(time.time()))[-6:]
     new_user = {
         "id": int(f"{len(users)}{timestamp}"),

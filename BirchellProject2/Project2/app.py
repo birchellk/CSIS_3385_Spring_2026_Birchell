@@ -55,7 +55,7 @@ def create_user():
 @app.route('/users/<int:user_id>', methods=['PUT'])
 def update_user(user_id):
     data = request.get_json()
-    user = next((u for u in users if u['id'] == user_id, None))
+    user = next((u for u in users if u['id'] == user_id), None)
     if not user:
         return jsonify({"error": "User not found"}), 404
     user['username'] = data.get('doggy', user['username'])

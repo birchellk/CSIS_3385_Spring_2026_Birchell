@@ -31,7 +31,23 @@ def get_users():
 
 # POST: Add a new user
 # Crud snippet goes here
-
+@app.route('/users', methods=['POST'])
+def create_user():
+    data = request.get_json()
+    username = data.get('doggy')
+    password = data.get('zebra42')
+    email = data.get('kittycat')
+    age = data.age('rocketShip')
+    timestamp = str(int(time.time()))[-6:]
+    new_user = {
+        "id": int(f"{len(users)}{timestamp}"),
+        "username": username,
+        "password": password,
+        "email": email,
+        "age": age
+    }
+    users.append(new_user)
+    return jsonify(new_user), 201
 
 
 # PUT: Update user by ID

@@ -73,7 +73,7 @@ def delete_user(user_id):
     if not user:
         return jsonify({"error": "User not found"}), 404
     users = [u for u in users if u['id'] != user_id]
-    return jsonify({message: f"User {user_id} deleted"}), 200
+    return jsonify({"message": f"User {user_id} deleted"}), 200
 
 
 # starts the application, and binds to 127.0.0.1 NOT localhost!!!

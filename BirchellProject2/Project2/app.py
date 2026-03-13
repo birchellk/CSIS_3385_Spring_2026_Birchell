@@ -66,7 +66,7 @@ def update_user(user_id):
 
 # DELETE: Remove user by ID
 # cruD snippet goes here
-@app.route('users/<int:user_id>', methods=['DELETE'])
+@app.route('/users/<int:user_id>', methods=['DELETE'])
 def delete_user(user_id):
     global users
     user = next((u for u in users if u['id'] == user_id), None)
